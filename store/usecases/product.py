@@ -31,8 +31,8 @@ class ProductUsecase:
         return ProductOut(**result)
     
     ##filtro como fazer o filtro de intervalo
-    async def get_filtro(self, num_1: Decimal_, num_2:Decimal_) -> ProductOut:
-        result = await self.collection.find({"price": num_1})
+    async def get_filtro(self, price: Decimal_,) -> ProductOut:
+        result = await self.collection.find({ price: { $gte: value } })
         await self.collection.find()
         if not result:
             raise NotFoundException(message=f"Product not found with filter: {id}") 
